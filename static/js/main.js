@@ -5,7 +5,6 @@ async function populateApp() {
         try {
             const response = await fetch("https://api.github.com/users/NumberJamie/repos");
             data = await response.json();
-
             localStorage.setItem('githubRepos', JSON.stringify(data));
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -15,7 +14,7 @@ async function populateApp() {
         data = JSON.parse(data);
     }
 
-    let app = document.getElementById('app');
+    const app = document.getElementById('app');
 
     data.forEach(repo => {
         const card = document.createElement('div');
@@ -23,10 +22,6 @@ async function populateApp() {
 
         const cardContent = document.createElement('div');
         cardContent.classList.add('header');
-
-        const logoImage = document.createElement('img');
-        logoImage.src = "../static/media/primary-logo.svg";
-        logoImage.alt = "logo";
 
         const title = document.createElement('h2');
         title.textContent = repo.name;
@@ -37,27 +32,18 @@ async function populateApp() {
         const btnContent = document.createElement('div');
         btnContent.classList.add('footer');
 
-        const Language = document.createElement('p');
-        Language.textContent = repo.language || "No language available";
-        Language.classList.add('language');
+        const language = document.createElement('p');
+        language.textContent = repo.language || "No language available";
+        language.classList.add('language');
 
         const githubLink = document.createElement('a');
         githubLink.href = repo.html_url;
-
-        const githubText = document.createElement('p');
-        githubText.textContent = "github";
-
-        const arrowImage = document.createElement('img');
-        arrowImage.src = "../static/media/arrow.svg";
-        arrowImage.alt = "arrow";
+        githubLink.textContent = "github";
 
         card.appendChild(cardContent);
-        cardContent.appendChild(logoImage);
         cardContent.appendChild(title);
         card.appendChild(description);
-        githubLink.appendChild(githubText);
-        githubLink.appendChild(arrowImage);
-        btnContent.appendChild(Language)
+        btnContent.appendChild(language)
         btnContent.appendChild(githubLink);
         card.appendChild(btnContent);
 
@@ -65,4 +51,4 @@ async function populateApp() {
     });
 }
 
-populateApp().then(r => {})
+populateApp().then(() => {});

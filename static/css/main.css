@@ -17,13 +17,21 @@ body{
     color: var(--text);
     background-color: var(--bg);
     font-family: 'Poppins', sans-serif;
-    h1{
+    & h1{
         font-size: 2rem;
     }
-    h2{
+    & h2{
+        &::before{
+            content: url('../media/primary-logo.svg');
+            height: 1.5rem;
+            width: 1.75rem;
+        }
+        display: flex;
+        align-items: center;
+        gap: .5rem;
         font-size: 1.5rem;
     }
-    p{
+    & p{
         font-size: 1rem;
     }
 }
@@ -73,6 +81,11 @@ nav{
         align-items: center;
         margin-top: auto;
         & a{
+            &::after{
+                content: url('../media/arrow.svg');
+                width: 1.5rem;
+                height: 1.5rem;
+            }
             &:hover{
                 transform: scale(1.05);
             }
