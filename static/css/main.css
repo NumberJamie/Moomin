@@ -30,6 +30,7 @@ body{
 
 main{
     margin-inline: auto;
+    margin-bottom: 2rem;
     max-width: 64rem;
 }
 
