@@ -20,25 +20,27 @@ async function populateApp() {
 
         data.forEach(repo => {
             const card = document.createElement('div');
-            card.classList.add('card');
-
+            card.classList.add('card', 'flex', 'column', 'between');
+                               
             const cardContent = document.createElement('div');
-            cardContent.classList.add('header');
+            cardContent.classList.add('flex');
 
             const title = document.createElement('h2');
+            title.classList.add('icon', 'rose', 'flex')
             title.textContent = repo.name;
 
             const description = document.createElement('p');
             description.textContent = repo.description || "No description available";
 
             const btnContent = document.createElement('div');
-            btnContent.classList.add('footer');
+            btnContent.classList.add('auto', 'flex', 'between');
 
             const language = document.createElement('p');
             language.textContent = repo.language || "No language available";
-            language.classList.add('language');
+            language.classList.add('icon', 'code', 'flex');
 
             const githubLink = document.createElement('a');
+            githubLink.classList.add('button', 'icon', 'arrow', 'flex')
             githubLink.href = repo.html_url;
             githubLink.textContent = "github";
 
